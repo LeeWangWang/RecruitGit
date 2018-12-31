@@ -6,7 +6,6 @@
  */
 package service;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -20,6 +19,7 @@ import bean.Candidate;
  * @Data: 2018年12月30日下午8:25:26
  */
 public class CandidateDao {
+	
 	/**
 	 * @Methodname: searchCandidateFromId
 	 * @Description: 按照求职者的id查询信息

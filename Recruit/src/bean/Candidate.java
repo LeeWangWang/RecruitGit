@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.*;
-
 /**@ClassName:User.java
  * @Description: 用户类,描述用户的基本属性
  * @Extends: null
@@ -10,17 +8,17 @@ import java.util.*;
  * @Data:2018年12月30日下午6:53:39
  */
 public class Candidate {
-    private int idCard;//身份证
     private String name;//姓名
     private String gender;//性别
     private int age;//年龄
     private String phones;//电话
-    private String emails;//邮箱
-    private String major;//主修专业
-    private String education; //学历
     private String address;//地址
-    private String jobObjective;//工作期望
+    private String emails;//邮箱
     private String workExperience;//工作经验
+    private int idCard;//身份证
+    private String jobObjective;//求职意向
+    private String education; //学历
+    private String major;//主修专业
 
     /**
      * @ClassName: User
@@ -98,12 +96,11 @@ public class Candidate {
     public Candidate() { }
     
     /**
-     * @MethodName: User
+     * @Title: Candidate
      * @Description: 用户类的构造方法,包含所有信息
-     * @Parame: [name, age, gender, idCard, phones, emails, address, education]
-     * @Return:
+     * @Param: [name, age, gender, idCard, phones, emails, address, education]
      * @Author: 李旺旺
-     * @Date: 2018/12/28 21:06
+     * @Time: 2018年12月31日下午3:03:26
      */
     public Candidate(String name, int age, String gender, int idCard, String phones,
                 String emails, String address, String education) {
@@ -117,6 +114,13 @@ public class Candidate {
         this.setAddress(address);
         this.setEducation(education);
     }
+    /**
+     * @Title: Candidate
+     * @Description: 用户类的构造方法,包含所有信息
+     * @Param: [name, age, gender, idCard, phones, emails, address, education, jobObjective, workExperience, major]
+     * @Author: 李旺旺
+     * @Time: 2018年12月31日下午3:03:26
+     */
     public Candidate(String name, int age, String gender, int idCard, String phones,
             String emails, String address, String education,String jobObjective, 
             String workExperience, String major) {
