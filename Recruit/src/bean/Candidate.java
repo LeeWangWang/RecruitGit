@@ -8,131 +8,184 @@ package bean;
  * @Data:2018年12月30日下午6:53:39
  */
 public class Candidate {
-    private String name;//姓名
-    private String gender;//性别
-    private int age;//年龄
-    private String phones;//电话
-    private String address;//地址
-    private String emails;//邮箱
-    private String workExperience;//工作经验
-    private int idCard;//身份证
-    private String jobObjective;//求职意向
-    private String education; //学历
-    private String major;//主修专业
+	private int candidateId;//求职者编号
+    private String candidateName;//姓名
+    private String candidateGender;//性别
+    private int candidateAge;//年龄
+    private String candidatePhone;//电话
+    private String candidateIdCard;//身份证
+    private String candidateEmail;//邮箱
+    private String candidateAddress;//地址
+    private String candidateMajor;//主修专业
+    private String candidateEducationed; //学历
+    private String candidateJobObjective;//求职意向
+	private String candidateWorkExperience;//工作经验
+    private String candidateAccount;//账号(只可以定义一次)
+    private String candidatePassword;//密码
 
     /**
      * @ClassName: User
      * @Description: Get和Set方法
      * @Author: 李旺旺
      * @Date: 2018/12/15 22:44
-     */
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return this.age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getGender() {
-        return this.gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    public int getIdCard() {
-        return this.idCard;
-    }
-    public void setIdCard(int idCard) {
-        this.idCard = idCard;
-    }
-    public String getPhones() {
-        return this.phones;
-    }
-    public void setPhones(String phones) {
-        this.phones = phones;
-    }
-    public String getEmails() {
-        return this.emails;
-    }
-    public void setEmails(String emails) {
-        this.emails = emails;
-    }
-    public String getAddress() {
-        return this.address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getEducation() {
-        return education;
-    }
-    public void setEducation(String education) {
-        this.education = education;
-    }
-    public String getMajor() {
-        return major;
-    }
-    public void setMajor(String major) {
-        this.major = major;
-    }
-    public String getJobObjective() {
-        return jobObjective;
-    }
-    public void setJobObjective(String jobObjective) {
-        this.jobObjective = jobObjective;
-    }
-    public String getWorkExperience() {
-        return workExperience;
-    }
-    public void setWorkExperience(String workExperience) {
-        this.workExperience = workExperience;
-    }
+     */    
+    public int getCandidateId() {
+		return candidateId;
+	}
 
-    public Candidate() { }
-    
-    /**
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
+	}
+
+	public String getCandidateName() {
+		return candidateName;
+	}
+
+	public void setCandidateName(String candidateName) {
+		this.candidateName = candidateName;
+	}
+
+	public String getCandidateGender() {
+		return candidateGender;
+	}
+
+	public void setCandidateGender(String candidateGender) {
+		this.candidateGender = candidateGender;
+	}
+
+	public int getCandidateAge() {
+		return candidateAge;
+	}
+
+	public void setCandidateAge(int candidateAge) {
+		this.candidateAge = candidateAge;
+	}
+
+	public String getCandidatePhone() {
+		return candidatePhone;
+	}
+
+	public void setCandidatePhone(String candidatePhone) {
+		this.candidatePhone = candidatePhone;
+	}
+
+	public String getCandidateIdCard() {
+		return candidateIdCard;
+	}
+
+	public void setCandidateIdCard(String candidateIdCard) {
+		this.candidateIdCard = candidateIdCard;
+	}
+
+	public String getCandidateEmail() {
+		return candidateEmail;
+	}
+
+	public void setCandidateEmail(String candidateEmail) {
+		this.candidateEmail = candidateEmail;
+	}
+
+	public String getCandidateAddress() {
+		return candidateAddress;
+	}
+
+	public void setCandidateAddress(String candidateAddress) {
+		this.candidateAddress = candidateAddress;
+	}
+
+	public String getCandidateMajor() {
+		return candidateMajor;
+	}
+
+	public void setCandidateMajor(String candidateMajor) {
+		this.candidateMajor = candidateMajor;
+	}
+
+	public String getCandidateEducationed() {
+		return candidateEducationed;
+	}
+
+	public void setCandidateEducationed(String candidateEducationed) {
+		this.candidateEducationed = candidateEducationed;
+	}
+
+	public String getCandidateJobObjective() {
+		return candidateJobObjective;
+	}
+
+	public void setCandidateJobObjective(String candidateJobObjective) {
+		this.candidateJobObjective = candidateJobObjective;
+	}
+
+	public String getCandidateWorkExperience() {
+		return candidateWorkExperience;
+	}
+
+	public void setCandidateWorkExperience(String candidateWorkExperience) {
+		this.candidateWorkExperience = candidateWorkExperience;
+	}
+
+	public String getCandidateAccount() {
+		return candidateAccount;
+	}
+
+	public void setCandidateAccount(String candidateAccount) {
+		this.candidateAccount = candidateAccount;
+	}
+
+	public String getCandidatePassword() {
+		return candidatePassword;
+	}
+
+	public void setCandidatePassword(String candidatePassword) {
+		this.candidatePassword = candidatePassword;
+	}
+	
+	public Candidate() { }
+	
+
+	/**
      * @Title: Candidate
-     * @Description: 用户类的构造方法,包含所有信息
-     * @Param: [name, age, gender, idCard, phones, emails, address, education]
+     * @Description: 用户类的构造方法,不包含编号、账号、密码
+     * @Param: [name, age, gender, idCard, phones, email, address, education, jobObjective, workExperience, major]
      * @Author: 李旺旺
      * @Time: 2018年12月31日下午3:03:26
      */
-    public Candidate(String name, int age, String gender, int idCard, String phones,
-                String emails, String address, String education) {
-        super();
-        this.setName(name);
-        this.setAge(age);
-        this.setGender(gender);
-        this.setIdCard(idCard);
-        this.setPhones(phones);
-        this.setEmails(emails);
-        this.setAddress(address);
-        this.setEducation(education);
+    public Candidate(String name, String gender, int age, String phones, String idCard,
+            String email, String address, String major, String education,String jobObjective, 
+            String workExperience) {
+	    super();
+	    this.setCandidateName(name);
+	    this.setCandidateGender(gender);
+	    this.setCandidateAge(age);
+	    this.setCandidatePhone(phones);
+	    this.setCandidateIdCard(idCard);
+	    this.setCandidateEmail(email);
+	    this.setCandidateAddress(address);
+	    this.setCandidateMajor(major);
+	    this.setCandidateEducationed(education);
+	    this.setCandidateJobObjective(jobObjective);
+	    this.setCandidateWorkExperience(workExperience);
     }
-    /**
-     * @Title: Candidate
-     * @Description: 用户类的构造方法,包含所有信息
-     * @Param: [name, age, gender, idCard, phones, emails, address, education, jobObjective, workExperience, major]
-     * @Author: 李旺旺
-     * @Time: 2018年12月31日下午3:03:26
-     */
-    public Candidate(String name, int age, String gender, int idCard, String phones,
-            String emails, String address, String education,String jobObjective, 
-            String workExperience, String major) {
-    super();
-    this.setName(name);
-    this.setAge(age);
-    this.setGender(gender);
-    this.setIdCard(idCard);
-    this.setPhones(phones);
-    this.setEmails(emails);
-    this.setAddress(address);
-    this.setEducation(education);
+    //包含所有属性
+    public Candidate(int id, String name, String gender, int age, String phones, String idCard,
+            String email, String address, String major, String education,String jobObjective, 
+            String workExperience, String account, String passworld) {
+	    super();
+	    this.setCandidateId(id);
+	    this.setCandidateName(name);
+	    this.setCandidateGender(gender);
+	    this.setCandidateAge(age);
+	    this.setCandidatePhone(phones);
+	    this.setCandidateIdCard(idCard);
+	    this.setCandidateEmail(email);
+	    this.setCandidateAddress(address);
+	    this.setCandidateMajor(major);
+	    this.setCandidateEducationed(education);
+	    this.setCandidateJobObjective(jobObjective);
+	    this.setCandidateWorkExperience(workExperience);
+	    this.setCandidateAccount(account);
+	    this.setCandidatePassword(passworld);
     }
 
     /**
@@ -144,7 +197,7 @@ public class Candidate {
      * @Date: 2018/12/15 22:54
      */
     public String toString(){
-        return this.getName();
+        return this.getCandidateName();
         //return String.format("%s,%d,%s,%s,%s,%s,%s",this.getName(),this.getAge(),
         //        this.getGender(),this.getIdCard(),this.getPhones(),this.getEmails(),this.getAddress());
     }
@@ -158,13 +211,20 @@ public class Candidate {
      * @Date: 2018/12/15 22:54
      */
     public void display(){
-        System.out.println("姓名:" + this.getName()
-                + "  年龄:" + this.getAge()
-                + "  性别:" + this.getGender()
-                + "  身份证:" + this.getIdCard()
-                + "  电话:" + this.getPhones()
-                + "  邮箱:" + this.getEmails()
-                + "  住址:" + this.getAddress());
+        System.out.println(
+        		"编号:" + this.getCandidateId()
+        		+ "姓名:" + this.getCandidateName()
+                + "  性别:" + this.getCandidateGender()
+                + "  年龄:" + this.getCandidateAge()
+                + "  电话:" + this.getCandidatePhone()
+                + "  身份证:" + this.getCandidateIdCard()
+                + "  邮箱:" + this.getCandidateEmail()
+                + "  住址:" + this.getCandidateAddress()
+        		+ "  专业:" + this.getCandidateMajor()
+        		+ "  专业:" + this.getCandidateEducationed()
+                + "  工作期望:" + this.getCandidateJobObjective()
+        		+ "  工作经验:" + this.getCandidateWorkExperience()
+        		);
     }
 
     /**
@@ -176,20 +236,21 @@ public class Candidate {
      * @Date: 2018/12/15 22:56
      */
     public static void main(String []args){
-        Candidate user1 = new Candidate("李旺旺", 20, "男", 111,
-                "111", "111", "上海市", "1");
+        Candidate user1 = new Candidate("李旺旺", "男", 20, "15587379525", "341223199711101939",
+                 "2458581040@qq.com", "亳州", "软件工程", "二本", "工作期望", "工作经验");
 
-        Candidate user2 = new Candidate("邱璐", 18, "女", 222,
-                "222", "222", "昆山市", "1");
+        Candidate user2 = new Candidate("邱璐", "女", 18, "17616152016", "1522232199711101939",
+                "549687018@qq.com", "昆山市", "网络工程", "二本", "工作期望", "工作经验");
 
-        Candidate user3 = new Candidate("周靖怡", 18, "女", 333,
-                "333", "333", "宁波市", "3");
+        Candidate user3 = new Candidate("周靖怡","女", 18, "17616154083", "330203199711101939",
+                "1814956792@qq.com", "宁波市", "网络工程", "二本", "工作期望", "工作经验");
 
-        Candidate user4 = new Candidate("熊大", 19, "男", 444,
-                "444", "444", "微山县", "1");
+        Candidate user4 = new Candidate("熊大", "男", 19, "18853711558", "370826199711101939",
+                "971557875@qq.com", "微山县", "软件工程", "二本", "工作期望", "工作经验");
 
-        Candidate user5 = new Candidate("熊二", 19, "男", 555,
-                "555", "555", "浏阳市", "5");
+        Candidate user5 = new Candidate("熊二", "男", 19, "17616152468", "430181199711101939",
+                "1771240731@qq.com", "浏阳市", "软件工程", "二本", "工作期望", "工作经验");
+        System.out.println("运行类：Candidate.Java");
         user1.display();
         user2.display();
         user3.display();

@@ -18,7 +18,7 @@ import bean.Candidate;
  * @Author: 李旺旺
  * @Data: 2018年12月30日下午8:25:26
  */
-public class CandidateDao {
+public class CandidateDaoservice {
 	
 	/**
 	 * @Methodname: searchCandidateFromId
@@ -33,7 +33,7 @@ public class CandidateDao {
 		Statement statement = null;//数据库操作接口，像数据库发送要执行的SQL语句
 		ResultSet resultSet = null;//数据库结果集的数据表，通常通过执行查询数据库语句生成
 		try {
-			statement = ConnectMySql.getConnection().createStatement();//创建用于执行静态SQL语句并返回它所生成结果的对象
+			statement = DBTool.getConnection().createStatement();//创建用于执行静态SQL语句并返回它所生成结果的对象
 			String sql = "select* from candidate";//SQL指令
 			resultSet = statement.executeQuery(sql);//发送SQL指令，结果放到ResultSet对象中
 			int id1;
@@ -50,8 +50,8 @@ public class CandidateDao {
 					String address = resultSet.getString("candidateAddress");
 					String jobObjective = resultSet.getString("candidateJobObjective");
 					String workExperience = resultSet.getString("candidateWorkExperience");
-					result = new Candidate(name, age, gender, id, phones, emails, address, education, jobObjective, 
-				             workExperience, major);
+					//result = new Candidate(name, age, gender, id, phones, emails, address, education, jobObjective, 
+				           //  workExperience, major);
 				}
 			}
 		}catch (Exception e) {
@@ -77,7 +77,7 @@ public class CandidateDao {
 	 * @Time: 2018年12月30日下午8:25:26
 	 */
 	public static void main(String[] args) {
-		CandidateDao g1 = new CandidateDao();
+		CandidateDaoservice g1 = new CandidateDaoservice();
 		Candidate c1 = g1.searchCandidateFromId(3);
 		c1.display();
 	}

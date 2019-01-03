@@ -15,7 +15,7 @@ import java.sql.*;
  * @Author: 李旺旺
  * @Data:2018年12月30日下午6:54:11
  */
-public class ConnectMySql {
+public class DBTool {
 	//定义全局数据库连接
     private static Connection connection = null;
     /**
@@ -34,8 +34,8 @@ public class ConnectMySql {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");//驱动程序名
                     //数据库名、用户名、密码
-                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/recruit?useSSL=false",
-                            "root", "123456");
+                    connection = DriverManager.getConnection(
+                    		"jdbc:mysql://localhost:3306/recruit?useSSL=false","root", "123456");
                 }catch (ClassNotFoundException e) {
                     e.printStackTrace();//未找到数据库
                 }catch (SQLException e){
@@ -65,6 +65,9 @@ public class ConnectMySql {
             e.printStackTrace();
         }
     }
+}
+/*
+
     public static void main(String[] args){
         Connection connection;
         //驱动程序名
@@ -98,8 +101,7 @@ public class ConnectMySql {
             System.out.println("数据库读取信息失败");
         }
     }
-}
-
+*/
 
 /*
 连接数据库获取数据

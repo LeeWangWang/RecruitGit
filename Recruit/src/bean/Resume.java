@@ -81,20 +81,20 @@ public class Resume{
     }
 
     public static void main(String []args){
-        Candidate user1 = new Candidate("李旺旺", 20, "男", 111,
-                "111", "111", "上海市", "1");
+    	Candidate user1 = new Candidate("李旺旺", "男", 20, "15587379525", "341223199711101939",
+                "2458581040@qq.com", "亳州", "软件工程", "二本", "工作期望", "工作经验");
 
-        Candidate user2 = new Candidate("邱璐", 18, "女", 222,
-                "222", "222", "昆山市", "1");
+       Candidate user2 = new Candidate("邱璐", "女", 18, "17616152016", "1522232199711101939",
+               "549687018@qq.com", "昆山市", "网络工程", "二本", "工作期望", "工作经验");
 
-        Candidate user3 = new Candidate("周靖怡", 18, "女", 333,
-                "333", "333", "宁波市", "3");
+       Candidate user3 = new Candidate("周靖怡","女", 18, "17616154083", "330203199711101939",
+               "1814956792@qq.com", "宁波市", "网络工程", "二本", "工作期望", "工作经验");
 
-        Candidate user4 = new Candidate("熊大", 19, "男", 444,
-                "444", "444", "微山县", "1");
+       Candidate user4 = new Candidate("熊大", "男", 19, "18853711558", "370826199711101939",
+               "971557875@qq.com", "微山县", "软件工程", "二本", "工作期望", "工作经验");
 
-        Candidate user5 = new Candidate("熊二", 19, "男", 555,
-                "555", "555", "浏阳市", "5");
+       Candidate user5 = new Candidate("熊二", "男", 19, "17616152468", "430181199711101939",
+               "1771240731@qq.com", "浏阳市", "软件工程", "二本", "工作期望", "工作经验");
         Resume resume1 = new Resume(user1, 1);//创建一个简历对象
         Resume resume2 = new Resume(user2, 2);
         Resume resume3 = new Resume(user3, 3);
