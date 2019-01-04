@@ -167,6 +167,23 @@ public class Candidate {
 	    this.setCandidateJobObjective(jobObjective);
 	    this.setCandidateWorkExperience(workExperience);
     }
+    public Candidate(int id, String name, String gender, int age, String phones, String idCard,
+            String email, String address, String major, String education,String jobObjective, 
+            String workExperience) {
+	    super();
+	    this.setCandidateId(id);
+	    this.setCandidateName(name);
+	    this.setCandidateGender(gender);
+	    this.setCandidateAge(age);
+	    this.setCandidatePhone(phones);
+	    this.setCandidateIdCard(idCard);
+	    this.setCandidateEmail(email);
+	    this.setCandidateAddress(address);
+	    this.setCandidateMajor(major);
+	    this.setCandidateEducationed(education);
+	    this.setCandidateJobObjective(jobObjective);
+	    this.setCandidateWorkExperience(workExperience);
+    }
     //包含所有属性
     public Candidate(int id, String name, String gender, int age, String phones, String idCard,
             String email, String address, String major, String education,String jobObjective, 
