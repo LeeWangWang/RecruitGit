@@ -1,23 +1,22 @@
-/**@FileName: CandidateDao.java
+/**@FileName: CandidateService.java
  * @Description: 
- * @Paclage: dao
+ * @Paclage: service
  * @Author: 李旺旺
- * @Data: 2019年1月3日下午7:21:36
+ * @Data: 2019年1月4日下午2:19:59
  */
-package dao;
+package service;
 
 import java.util.List;
-
 import bean.Candidate;
 
-/**@ClassName: CandidateDao.java
+/**@ClassName: CandidateService.java
  * @Description: 
  * @Extends: 
  * @Implements: 
  * @Author: 李旺旺
- * @Data: 2019年1月3日下午7:21:36
+ * @Data: 2019年1月4日下午2:19:59
  */
-public interface CandidateDao {
+public interface CandidateService {
 	boolean addCandidate(Candidate c) throws Exception;
 	boolean deleteCandidate(int candidateId) throws Exception;
 	List<Candidate> searchAll(String field) throws Exception;
@@ -28,4 +27,3 @@ public interface CandidateDao {
 	List<Candidate> searchByEducation(String education) throws Exception;
 	boolean updateCandidate(Candidate c) throws Exception;
 }
-

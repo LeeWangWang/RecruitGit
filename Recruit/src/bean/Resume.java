@@ -15,7 +15,7 @@ package bean;
  */
 public class Resume{
     //简历的属性
-    private Candidate user;//用户的信息
+    private int candidateId;//用户的编号
     private int positionId;//应聘职位
     private int isInterview;//是否录用
 
@@ -27,16 +27,17 @@ public class Resume{
      * @Author: 李旺旺
      * @Date: 2018/12/28 21:03
      */
-    public Candidate getUser() {
-        return user;
-    }
-    public void setUser(Candidate user) {
-        this.user = user;
-    }
+    
     public int getPositionId() {
         return positionId;
     }
-    public void setPositionId(int positionId) {
+    public int getCandidateId() {
+		return candidateId;
+	}
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
+	}
+	public void setPositionId(int positionId) {
         this.positionId = positionId;
     }
     public int getIsInterview() {
@@ -54,15 +55,15 @@ public class Resume{
      * @Author: 李旺旺
      * @Date: 2018/12/28 21:17
      */
-    public Resume(Candidate user, int positionId, int isInterview){
+    public Resume(int candidateId, int positionId, int isInterview){
         super();
-        this.setUser(user);
+        this.setCandidateId(candidateId);
         this.setPositionId(positionId);
         this.setIsInterview(isInterview);
     }
-    public Resume(Candidate user, int positionId){
+    public Resume(int candidateId, int positionId){
         super();
-        this.setUser(user);
+        this.setCandidateId(candidateId);
         this.setPositionId(positionId);
     }
     public Resume(){   }
@@ -76,7 +77,7 @@ public class Resume{
      * @Date: 2018/12/28 21:12
      */
     public void display(){
-        this.getUser().display();
+        //this.getUser().display();
         System.out.println("应聘职位:" + this.getPositionId() + "   是否录用:" + this.getIsInterview());
     }
 
@@ -95,11 +96,11 @@ public class Resume{
 
        Candidate user5 = new Candidate("熊二", "男", 19, "17616152468", "430181199711101939",
                "1771240731@qq.com", "浏阳市", "软件工程", "二本", "工作期望", "工作经验");
-        Resume resume1 = new Resume(user1, 1);//创建一个简历对象
-        Resume resume2 = new Resume(user2, 2);
-        Resume resume3 = new Resume(user3, 3);
-        Resume resume4 = new Resume(user4, 4);
-        Resume resume5 = new Resume(user5, 5);
+        Resume resume1 = new Resume(1, 1);//创建一个简历对象
+        Resume resume2 = new Resume(2, 2);
+        Resume resume3 = new Resume(3, 3);
+        Resume resume4 = new Resume(4, 4);
+        Resume resume5 = new Resume(5, 5);
         resume1.display();
         resume2.display();
         resume3.display();

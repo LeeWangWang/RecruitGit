@@ -8,9 +8,9 @@ package dao;
 
 import java.sql.*;
 import java.util.*;
-import service.DBTool;
-import sun.util.logging.resources.logging;
+
 import bean.Candidate;
+import util.DBTool;
 
 /**@ClassName: CandidateDaoImpl.java
  * @Description: 
@@ -19,7 +19,7 @@ import bean.Candidate;
  * @Author: 李旺旺
  * @Data: 2019年1月3日下午7:25:19
  */
-public class CandidateDaoImpl implements CandidateDao {
+public class CandidateDaoImpl implements CandidateDao1 {
 
 	public CandidateDaoImpl() { }
 	
@@ -224,12 +224,13 @@ public class CandidateDaoImpl implements CandidateDao {
 	 * @Author: 李旺旺,未验证
 	 * @Time: 2019年1月4日上午9:05:48
 	 */
-	public List<Candidate> searchAll(String field) throws Exception {
+	public List<Candidate> searchAll() throws Exception {
 		List<Candidate> list = new ArrayList<Candidate>();//创建查询结果对象
 		Connection conn = DBTool.getConnection();//连接数据库
 		ResultSet rs;//数据库结果集的数据表
-		PreparedStatement pst = conn.prepareStatement("select * from candidate where candidateName like ? order by convert(candidateName using GBK)");
-		pst.setString(1, "%"+field+"%");
+		//PreparedStatement pst = conn.prepareStatement("select * from candidate where candidateName like ? order by convert(candidateName using GBK)");
+		PreparedStatement pst = conn.prepareStatement("select * from candidate ");
+		//pst.setString(1, "%"+field+"%");
 		rs = pst.executeQuery();
 		while(rs.next()) {
 			Candidate c = new Candidate(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),
@@ -239,7 +240,7 @@ public class CandidateDaoImpl implements CandidateDao {
 		}
 		rs.close();
 		pst.close();
-		return null;
+		return list;
 	}
 
 	/**
