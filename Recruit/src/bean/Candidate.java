@@ -9,6 +9,7 @@ package bean;
  */
 public class Candidate {
 	private int candidateId;//求职者编号
+	
     private String candidateName;//姓名
     private String candidateGender;//性别
     private int candidateAge;//年龄
@@ -18,8 +19,9 @@ public class Candidate {
     private String candidateAddress;//地址
     private String candidateMajor;//主修专业
     private String candidateEducationed; //学历
-    private String candidateJobObjective;//求职意向
+    private String candidateJobObjective;//期望年薪
 	private String candidateWorkExperience;//工作经验
+	
     private String candidateAccount;//账号(只可以定义一次)
     private String candidatePassword;//密码
 

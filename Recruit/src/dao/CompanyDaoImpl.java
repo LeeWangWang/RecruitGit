@@ -83,4 +83,39 @@ public class CompanyDaoImpl implements CompanyDao {
 		}
 	}
 
+	public List<Company> search(String search) throws Exception{
+		List<Company> list = new ArrayList<Company>();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from company where companyName and companyAddress like ? order by convert(candidateName using GBK)");
+		pst.setString(1, "%"+search+"%");
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Company c = new Company(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
+					rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+					rs.getString(9),rs.getString(10));
+			list.add(c);
+		}
+		
+		rs.close();
+		pst.close();
+		return list;
+	}
+	
+	public Company searchByCompanyId(int companyId) throws Exception{
+		Company result = new Company();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from company where companyId = " + companyId);
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Company c = new Company(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
+					rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+					rs.getString(9),rs.getString(10));
+			result = c;
+		}
+		rs.close();
+		pst.close();
+		return result;
+	}
 }

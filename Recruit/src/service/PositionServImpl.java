@@ -80,4 +80,13 @@ public class PositionServImpl implements PositionService{
 		}
 	}
 
+ 	public List<Position> search(String search){
+		try {
+			return positionDao.search(search);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }

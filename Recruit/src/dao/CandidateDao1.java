@@ -26,6 +26,7 @@ public interface CandidateDao1 {
 	List<Candidate> searchByAddress(String address) throws Exception;
 	List<Candidate> searchByMajor(String major) throws Exception;
 	List<Candidate> searchByEducation(String education) throws Exception;
+	Candidate searchByCandidateId(int candidateId) throws Exception;
 	boolean updateCandidate(Candidate c) throws Exception;
 }
 

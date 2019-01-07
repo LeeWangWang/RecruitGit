@@ -56,20 +56,22 @@ public class ResumeServImpl implements ResumeService{
 	}
 
 
-	public void addResume(Resume resume) {
+	public boolean addResume(Resume resume) {
 		try {
-			resumeDao.addResume(resume);
+			return resumeDao.addResume(resume);
 		}catch(Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
 
-	public void dealResume(Resume resume, short isInterview) {
+	public boolean dealResume(Resume resume, short isInterview) {
 		try {
-			resumeDao.dealResume(resume, isInterview);
+			return resumeDao.dealResume(resume, isInterview);
 		}catch(Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 

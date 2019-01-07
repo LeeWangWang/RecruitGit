@@ -91,7 +91,7 @@ public class ResumeDaoImpl implements ResumeDao {
 		Connection conn = DBTool.getConnection();
 		ResultSet rs;
 		Statement st = conn.createStatement();		
-		rs = st.executeQuery("select *  from resume where positionId = "+searchId);	
+		rs = st.executeQuery("select *  from resume where positionId = " + searchId);	
 		
 		while(rs.next()) {
 			int candidateId = rs.getInt(1);

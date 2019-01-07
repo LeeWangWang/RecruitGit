@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import com.sun.jndi.url.rmi.rmiURLContext;
+
 import bean.*;
 import dao.CompanyDao;
 
@@ -21,7 +23,6 @@ public class CompanyServiceImpl implements CompanyService {
 			return null;
 		}
 	}
-
 	
 	public void addNewCompany(Company company) {
 		try {
@@ -31,5 +32,22 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 
 	}
+	
+	public List<Company> search(String search){
+		try {
+			return companyDao.search(search);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 
+	public Company searchByCompanyId(int companyId) {
+		try {
+			return companyDao.searchByCompanyId(companyId);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

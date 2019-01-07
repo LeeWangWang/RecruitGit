@@ -56,6 +56,8 @@ public interface PositionDao {
 	 * @Date:2019Äê1ÔÂ3ÈÕ
 	 */
 	public Position searchByPositionId(int positionId) throws Exception;
-
+	
+	List<Position> search(String search) throws Exception;
+	
 }
 

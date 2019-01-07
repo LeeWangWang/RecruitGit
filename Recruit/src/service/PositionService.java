@@ -58,4 +58,5 @@ public interface PositionService {
 	 */
 	public Position searchByPositionId(int positionId);
 
+	List<Position> search(String search);	
 }

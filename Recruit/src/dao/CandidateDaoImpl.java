@@ -24,7 +24,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	public CandidateDaoImpl() { }
 	
 	/**
-	 * @Methodname: addCandidate
 	 * @Description: 像数据库里添加新的求职者用户对象
 	 * @Param: Candidate c 求职者用户对象
 	 * @Return: boolean 数据库添加操作成功返回true , 失败返回false
@@ -61,7 +60,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 	
 	/**
-	 * @Methodname: deleteCandidate
 	 * @Description: 数据库里删除求职者用户对象
 	 * @Param: int candidateId 求职者的编号
 	 * @Return: boolean 数据库删除操作成功返回true , 失败返回false
@@ -82,7 +80,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: searchByName
 	 * @Description: 按照求职者的姓名进行模糊查询数据库
 	 * @Param: String name(求职者姓名)
 	 * @Return:  Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -109,7 +106,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: searchByGender
 	 * @Description: 按照求职者的性别进行模糊查询数据库
 	 * @Param: String gender(求职者性别)
 	 * @Return: Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -136,7 +132,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: searchByAddress
 	 * @Description: 按照求职者的地址进行模糊查询数据库
 	 * @Param: String address(求职者的地址)
 	 * @Return: Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -163,7 +158,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: searchByMajor
 	 * @Description: 按照求职者的专业进行模糊查询数据库
 	 * @Param: String major(求职者的专业)
 	 * @Return: Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -190,7 +184,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: searchByEducation
 	 * @Description: 按照求职者的学历进行模糊查询数据库
 	 * @Param: String education(求职者的学历)
 	 * @Return: Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -217,7 +210,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 	
 	/**
-	 * @Methodname: searchAll
 	 * @Description: 模糊查询数据库
 	 * @Param: String field , 模糊查询 , 任意字段
 	 * @Return: Candidate , 查询数据库操作成功返回该对象列表 , 不成功返回null
@@ -244,7 +236,6 @@ public class CandidateDaoImpl implements CandidateDao1 {
 	}
 
 	/**
-	 * @Methodname: updateCandidate
 	 * @Description: 更新数据库的数据
 	 * @Param: Candidate c , 需要更新的求职者用户对象
 	 * @Return: Boolean , 更新数据库操作成功返回true , 失败返回false
@@ -279,7 +270,23 @@ public class CandidateDaoImpl implements CandidateDao1 {
 		state.close();
 		return flag;
 	}
-	
+
+	public Candidate searchByCandidateId(int candidateId) throws Exception{
+		Candidate result = new Candidate();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from candidate where candidateId = " + candidateId);
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Candidate c = new Candidate(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),
+					rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+					rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));
+			result = c;
+		}
+		rs.close();
+		pst.close();
+		return result;
+	}
 }
 
 

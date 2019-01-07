@@ -19,7 +19,6 @@ public interface ResumeService {
 	 * @Date:2019年1月3日
 	 */
 	List<Resume> searchAll(int companyId);
-
 	/**
 	 * @Description:通过职位ID查找申请
 	 * @FileName:ResumeDao.java
@@ -47,13 +46,13 @@ public interface ResumeService {
 	 * @Author:周天乐Sio
 	 * @Date:2019年1月3日
 	 */
-	void addResume(Resume resume);
+	boolean addResume(Resume resume);
 	/**
 	 * @Description: 公司处理申请
 	 * @FileName:ResumeDao.java
 	 * @Author:周天乐Sio
 	 * @Date:2019年1月3日
 	 */
-	void dealResume(Resume resume,short isInterview);
+	boolean dealResume(Resume resume,short isInterview);
 }
 

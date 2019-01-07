@@ -119,5 +119,13 @@ public class CandidateServiceImpl implements CandidateService {
 		}
 		return false;
 	}
-	
+
+	public Candidate searchByCandidateId(int candidateId) throws Exception{
+		try {
+			return candidateDao.searchByCandidateId(candidateId);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
