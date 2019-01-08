@@ -5,6 +5,7 @@ package service;
  * @Date:2019Äê1ÔÂ3ÈÕ
  */
 
+import java.util.ArrayList;
 import java.util.List;
 import bean.Position;
 import dao.PositionDao;
@@ -80,13 +81,14 @@ public class PositionServImpl implements PositionService{
 		}
 	}
 
- 	public List<Position> search(String search){
+ 	public List<Position> searchByPositionName(String PositionName){
 		try {
-			return positionDao.search(search);
+			return positionDao.searchByPositionName(PositionName);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+ 	
 }
+

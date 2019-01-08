@@ -69,8 +69,6 @@ public class PositionDaoImpl implements PositionDao{
 			String positionIntroduction = rs.getString(4);
 			String positionDiploma = rs.getString(5);
 			String positionLightspot = rs.getString(6);
-			//List<String> listPhones = new ArrayList<String>(Arrays.asList(phones.split(";")));
-			
 			Position p = new Position(positionId,positionName,companyId,positionIntroduction,positionDiploma,positionLightspot);
 			list.add(p);
 		}
@@ -179,27 +177,17 @@ public class PositionDaoImpl implements PositionDao{
 	}
 
 	//模糊查询职位
-	public List<Position> search(String search) throws Exception{
+	public List<Position> searchByPositionName(String PositionName) throws Exception{
 		List<Position> list = new ArrayList<Position>();//创建查询结果对象
 		Connection conn = DBTool.getConnection();//连接数据库
 		ResultSet rs;//数据库结果集的数据表
-		PreparedStatement pst = conn.prepareStatement("select * from position where positionName like ? order by convert(candidateName using GBK)");
-		pst.setString(1, "%"+search+"%");
+		PreparedStatement pst = conn.prepareStatement("select * from position where positionName like ? order by convert(positionName using GBK)");
+		pst.setString(1, "%" + PositionName + "%");
 		rs = pst.executeQuery();
 		while(rs.next()) {
 			Position c = new Position(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
 					rs.getString(5),rs.getString(6));
 			list.add(c);
-		}
-		List<Company> com = new ArrayList<Company>();
-		CompanyService coms = new CompanyServiceImpl(new CompanyDaoImpl());
-		com = coms.search(search);
-		PositionService pos = new PositionServImpl(new PositionDaoImpl());
-		for(Company c: com) {
-			List<Position> list2 = pos.searchByCompanyId(c.getCompanyId());
-			for(Position p:list2) {
-				list.add(p);
-			}
 		}
 		rs.close();
 		pst.close();

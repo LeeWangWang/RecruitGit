@@ -28,12 +28,12 @@ import service.PositionService;
 public class CandidateMainGui extends JFrame {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
-	
 	public CandidateMainGui() {}
 	
 	public CandidateMainGui(int candidateId) throws Exception {
 		try {
-			UIManager.setLookAndFeel(new NimbusLookAndFeel());
+			String lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+			UIManager.setLookAndFeel(new NimbusLookAndFeel());//new NimbusLookAndFeel()
 		} catch (UnsupportedLookAndFeelException e1) {			
 			e1.printStackTrace();
 		}
@@ -54,7 +54,7 @@ public class CandidateMainGui extends JFrame {
 			Vector<Vector<String>> tab2 = new Vector<Vector<String>>();
 			for(Position p1 : positions) {
 				Vector<String> table1 = new Vector<String>();
-				String companyName = (companyService.searchByCompanyId(p1.getPositionId())).getCompanyName();
+				String companyName = (companyService.searchByCompanyId(p1.getCompanyId())).getCompanyName();
 				table1.add(String.valueOf(p1.getPositionId()) + "");//职位编号
 				table1.add(p1.getPositionName() + "");//职位名称
 				table1.add(companyName + "");//公司名称
@@ -63,25 +63,10 @@ public class CandidateMainGui extends JFrame {
 				table1.add(p1.getPositionLightspot() + "");//职位要求
 				tab1.add(table1);
 			}
-			Vector<String> table2 = new Vector<String>();
-			table2.add(candidate.getCandidateName() + "");
-			table2.add(candidate.getCandidateGender() + "");
-			table2.add(String.valueOf(candidate.getCandidateAge()) + "");
-			table2.add(candidate.getCandidatePhone() + "");
-			table2.add(candidate.getCandidateIdCard() + "");
-			table2.add(candidate.getCandidateEmail() + "");
-			table2.add(candidate.getCandidateAddress() + "");
-			table2.add(candidate.getCandidateMajor() + "");
-			table2.add(candidate.getCandidateEducationed() + "");
-			table2.add(candidate.getCandidateJobObjective() + "");
-			table2.add(candidate.getCandidateWorkExperience() + "");
-			tab2.add(table2);
 			CandidateGui1 pal1 = new CandidateGui1(candidate);
 			CandidateGui2 pal2 = new CandidateGui2(candidate);
-			pal1.freshTable(positions);//用来刷新界面一
-			pal2.freshTable(tab2);//用来刷新界面二
-			//pal1.setBounds(200, 200, 1200, 500);
-			//pal2.setBounds(200, 200, 1200, 500);
+			pal1.freshTable(tab1);//用来刷新界面一
+			pal2.freshInfromation(candidate);//用来刷新界面二
 			top.add("找工作",pal1);
 			top.add("个人简历",pal2);
 			this.add(top);
@@ -99,7 +84,7 @@ public class CandidateMainGui extends JFrame {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		new CandidateMainGui(1);
+		new CandidateMainGui(3);
 	}
 	
 }

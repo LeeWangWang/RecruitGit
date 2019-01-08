@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
@@ -13,6 +14,7 @@ import javax.swing.text.JTextComponent;
 import bean.*;
 import dao.*;
 import service.*;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**@ClassName: CandidateGui.java
  * @Description: 求职者信息界面
@@ -62,10 +64,8 @@ public class CandidateGui1 extends JPanel{
 		//文本框
 		cptItems = new ArrayList<JComponent>();
 		for(int i = 0; i< fields1_length;i++) {
-			JTextField t =new JTextField(15);
-			t.setMaximumSize(t.getPreferredSize());
-			t.setEnabled(false);//设置不可编辑状态
-			t.setFont(font);//设置字体
+			JTextField t =new JTextField(50);
+			setJTextfieldFont1(t, font);//设置文本框的字体以及格式
 			jTextField.add(t);
 			cptItems.add(t);
 		}
@@ -104,7 +104,7 @@ public class CandidateGui1 extends JPanel{
 		btnQuit1.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(CandidateGui1.this, "确认应聘该职位吗?")) {
+				if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(CandidateGui1.this, "确认退出程序吗?")) {
 					System.exit(0);
 				}
 			}
@@ -112,7 +112,13 @@ public class CandidateGui1 extends JPanel{
 		btn.add(btnSendRecurit);
 		btn.add(btnQuit1);
 		
-		palDetail = new JPanel(new BorderLayout());	
+		palDetail = new JPanel(new BorderLayout());
+
+		JComboBox<String> comSearch = new JComboBox<String>();
+		comSearch.addItem("职位");
+		comSearch.addItem("公司");
+		comSearch.addItem("公司地址");
+		
 		JTextField tfdsearch = new JTextField("搜索",10);
 		tfdsearch.setFont(font);
 		tfdsearch.addActionListener(new ActionListener() {
@@ -120,41 +126,65 @@ public class CandidateGui1 extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				Vector<Vector<String>> freashTab1 = new Vector<Vector<String>>();
 				List<Position> positions = new ArrayList<Position>();
-				positions = positionService.search(tfdsearch.getText());//模糊查询职位名
-				for(Position p1 : positions) {
-					Vector<String> table1 = new Vector<String>();
-					String companyName = (companyService.searchByCompanyId(p1.getPositionId())).getCompanyName();
-					table1.add(String.valueOf(p1.getPositionId()) + "");//职位编号
-					table1.add(p1.getPositionName() + "");//职位名称
-					table1.add(companyName + "");//公司名称
-					table1.add(p1.getPositionIntroduction() + "");//职位介绍
-					table1.add(p1.getPositionDiploma() + "");//学历要求
-					table1.add(p1.getPositionLightspot() + "");//职位要求
-					freashTab1.add(table1);
+				List<Company> companies = new ArrayList<Company>();
+				positionService = new PositionServImpl(new PositionDaoImpl());
+				companyService = new CompanyServiceImpl(new CompanyDaoImpl());
+				
+				if(comSearch.getSelectedIndex() == 0) {
+					System.out.println("按照专业搜索");
+					positions = positionService.searchByPositionName(tfdsearch.getText());//模糊查询职位名
+					for(Position p1 : positions) {
+						Vector<String> table1 = new Vector<String>();
+						String companyName = (companyService.searchByCompanyId(p1.getCompanyId())).getCompanyName();
+						table1.add(String.valueOf(p1.getPositionId()) + "");//职位编号
+						table1.add(p1.getPositionName() + "");//职位名称
+						table1.add(companyName + "");//公司名称
+						table1.add(p1.getPositionIntroduction() + "");//职位介绍
+						table1.add(p1.getPositionDiploma() + "");//学历要求
+						table1.add(p1.getPositionLightspot() + "");//职位要求
+						freashTab1.add(table1);
+					}
+					freshTable(freashTab1);
+				}else {
+					if(comSearch.getSelectedIndex() == 1) {
+						System.out.println("按照公司搜索");
+						companies = companyService.searchByCompanyName(tfdsearch.getText());//模糊查询公司
+					}else {
+						System.out.println("按照公司地址搜索");
+						companies = companyService.searchByCompanyAddress(tfdsearch.getText());//模糊查询公司
+					}
+					for(Company c : companies) {//遍历公司结果
+						positions = positionService.searchByCompanyId(c.getCompanyId());
+						for(Position p1 : positions) {//遍历职位结果
+							Vector<String> table1 = new Vector<String>();
+							String companyName = c.getCompanyName();
+							table1.add(String.valueOf(p1.getPositionId()) + "");//职位编号
+							table1.add(p1.getPositionName() + "");//职位名称
+							table1.add(companyName + "");//公司名称
+							table1.add(p1.getPositionIntroduction() + "");//职位介绍
+							table1.add(p1.getPositionDiploma() + "");//学历要求
+							table1.add(p1.getPositionLightspot() + "");//职位要求
+							freashTab1.add(table1);
+						}
+					}
+					freshTable(freashTab1);
 				}
-				freshTable(freashTab1);
 			}
 		});
 		
-		
-		JButton btnsearch = new JButton("搜索");
-		btnsearch.setFont(font);
-		//加上事件
-		
-		
-		Box box1 = Box.createHorizontalBox();
+		Box box1 = Box.createHorizontalBox();//创建水平布局
+		box1.add(comSearch);
 		box1.add(tfdsearch);
-		box1.add(btnsearch);
-		palDetail.add(box1,BorderLayout.NORTH);
+		palDetail.add(box1,BorderLayout.NORTH);//放置在选项卡一面板的最上面（北）
 		
-		Box commond = Box.createHorizontalBox();
-		commond.add(Box.createGlue());
+		Box commond = Box.createHorizontalBox();//创建水平布局
+		commond.add(Box.createGlue());//添加胶水
 		for(JButton b:btn) {
 			b.setFont(font);
-			commond.add(b);
-			commond.add(Box.createGlue());
+			commond.add(b);//将两个按钮添加进去
+			commond.add(Box.createGlue());//添加胶水
 		}
-		palDetail.add(commond,BorderLayout.SOUTH);
+		palDetail.add(commond,BorderLayout.SOUTH);//放置在面板的下面
 		JPanel topCenter =  new JPanel();		
 		GroupLayout layout = new GroupLayout(topCenter);
 		topCenter.setLayout(layout);
@@ -210,7 +240,7 @@ public class CandidateGui1 extends JPanel{
 				for(int i = 0; i < cptItems.size();i++) {
 					JComponent c = cptItems.get(i);
 					String v =  (String)tblInfo.getValueAt(currentRow, i);//获取当前行的值
-					System.out.println(i + v);
+					//System.out.print(i + " " + v);
 					if(v==null)
 						v="";
 					if(c instanceof JTextComponent) {
@@ -218,7 +248,6 @@ public class CandidateGui1 extends JPanel{
 					}
 					else if(c instanceof JComboBox) {//将按钮或可编辑字段与下拉列表组合的组件。
 						((JComboBox)c).setSelectedItem(v);
-						System.out.println(((JComboBox) c).getSelectedItem().toString());
 					}
 					else
 						if(c instanceof JScrollPane) {//如果是滚动条
@@ -300,12 +329,24 @@ public class CandidateGui1 extends JPanel{
 	private void setJTableFont(JTable table,Font f) {
 		table.setFont(f);//设置表格字体
 		table.getTableHeader().setFont(f);//设置表头字体
+		DefaultTableCellHeaderRenderer hr = new DefaultTableCellHeaderRenderer();
+		hr.setHorizontalAlignment(JLabel.CENTER);
+		table.getTableHeader().setDefaultRenderer(hr);//设置表头文字居中
 		table.setRowHeight(30);//设置表的高度
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
 		r.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, r);//设置表格内容居中显示
+		table.setSelectionBackground(new Color(0xd3d3d3));
 		//table.enable(false);
 	}
+	
+	private void setJTextfieldFont1(JTextField text, Font font) {
+		text.setMaximumSize(text.getPreferredSize());
+		text.setEnabled(false);//设置不可编辑状态
+		text.setFont(font);//设置字体
+		text.setHorizontalAlignment(JTextField.CENTER);
+	}
+	
 }
 
 class MyTableModel extends DefaultTableModel{

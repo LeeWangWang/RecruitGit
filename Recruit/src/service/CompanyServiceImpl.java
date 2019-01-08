@@ -14,6 +14,14 @@ public class CompanyServiceImpl implements CompanyService {
 		this.companyDao = companyDao;  //将使用的类进行实例化，面向接口
 	}
 
+	public List<Company> searchByCompanyName(String companyName){
+		try {
+			return companyDao.searchByCompanyName(companyName);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public List<Company> searchAll() {
 		try {
@@ -33,9 +41,9 @@ public class CompanyServiceImpl implements CompanyService {
 
 	}
 	
-	public List<Company> search(String search){
+	public List<Company> searchByCompanyAddress(String companyAddress){
 		try {
-			return companyDao.search(search);
+			return companyDao.searchByCompanyAddress(companyAddress);
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
