@@ -10,13 +10,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 
-/**@ClassName: CandidateGui.java
- * @Description: 求职者信息界面
- * @Extends: JTabbedPane（选项卡面板）中间容器
- * @Implements: 无
- * @Author: 李旺旺
- * @Data: 2018年12月31日下午4:02:54
- */
+import gui.customStyle.StyleArgument;
+
 public class CandidateGui extends JPanel{
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;

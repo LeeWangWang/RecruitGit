@@ -1,9 +1,3 @@
-/**@FileName: CandidateDao.java
- * @Description: 
- * @Paclage: dao
- * @Author: 李旺旺
- * @Data: 2019年1月3日下午7:21:36
- */
 package dao;
 
 import java.util.List;
@@ -11,9 +5,6 @@ import java.util.List;
 import bean.Candidate;
 
 /**@ClassName: CandidateDao.java
- * @Description: 
- * @Extends: 
- * @Implements: 
  * @Author: 李旺旺
  * @Data: 2019年1月3日下午7:21:36
  */
@@ -28,5 +19,6 @@ public interface CandidateDao1 {
 	List<Candidate> searchByEducation(String education) throws Exception;
 	Candidate searchByCandidateId(int candidateId) throws Exception;
 	boolean updateCandidate(Candidate c) throws Exception;
+	boolean addNewCandidate(Candidate candidate) throws Exception;
 }
 

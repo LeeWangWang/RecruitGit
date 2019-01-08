@@ -216,9 +216,8 @@ public class Candidate {
      * @Date: 2018/12/15 22:54
      */
     public String toString(){
-        return this.getCandidateName();
-        //return String.format("%s,%d,%s,%s,%s,%s,%s",this.getName(),this.getAge(),
-        //        this.getGender(),this.getIdCard(),this.getPhones(),this.getEmails(),this.getAddress());
+        //return this.getCandidateName();
+        return String.format("%s,%s",this.getCandidateAccount(),this.getCandidatePassword());
     }
 
     /**

@@ -1,15 +1,7 @@
-/**@FileName:Resume.java
- * @Description: 
- * @Paclage:bean
- * @Author:李旺旺
- * @Data:2018年12月30日下午6:53:28
- */
 package bean;
 
-/**@ClassName:Resume.java
+/**
  * @Description: 用户的简历
- * @Extends: null
- * @Implements: null
  * @Author: 李旺旺
  * @Data:2018年12月30日下午6:53:28
  */
@@ -20,9 +12,6 @@ public class Resume{
     private int isInterview;//是否录用
 
     /**
-     * @MethodName: get and set
-     * @Description: Get和Set方法,用来更改简历的属性
-     * @Parame: []
      * @Return: 简历的属性
      * @Author: 李旺旺
      * @Date: 2018/12/28 21:03
@@ -48,10 +37,7 @@ public class Resume{
     }
 
     /**
-     * @MethodName: Resume
      * @Description: 构造函数，用来创建简历对象
-     * @Parame: [user, positionId, isInterview]
-     * @Return:
      * @Author: 李旺旺
      * @Date: 2018/12/28 21:17
      */
@@ -69,10 +55,7 @@ public class Resume{
     public Resume(){   }
 
     /**
-     * @MethodName: display
      * @Description: 显示用户简历的信息
-     * @Parame: []
-     * @Return: void
      * @Author: 李旺旺
      * @Date: 2018/12/28 21:12
      */

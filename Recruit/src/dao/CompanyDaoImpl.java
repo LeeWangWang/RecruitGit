@@ -44,32 +44,33 @@ public class CompanyDaoImpl implements CompanyDao {
 
 	}
 
-	public void addNewCompany(Company company) throws Exception {
-		try {
-        	// 获取数据库的连接
-    		Connection conn = DBTool.getConnection();
-    		// 设置SQL规则，数据由于还不知道先用"？"代替
-    		String sql = "insert into company values (?,?,?,?,?,?,?,?,?,?)";
-    		//预处理sql语句
-    		PreparedStatement presta = conn.prepareStatement(sql);
-    		//设置sql语句中的values值
-    		int i = 0;
-    		i=Integer.valueOf(company.getCompanyId()).intValue();
-    		presta.setInt(1, i);
-    		presta.setString(2, company.getCompanyName());
-    		presta.setString(3, company.getCompanyAddress());
-    		presta.setString(4, company.getCompanyType());
-    		presta.setString(5, company.getCompanyLegalPerson());
-    		presta.setString(6, company.getCompanyEmail());
-    		presta.setString(7, company.getCompanyPhone());
-    		presta.setString(8, company.getCompanyCaptial());
-    		presta.setString(9, company.getCompanyAccount());
-    		presta.setString(10, company.getCompanyPassword());
-    		// 执行SQL语句，实现数据添加
-    		presta.executeUpdate();
-        }catch(SQLException e) {
-        	e.printStackTrace();
-        }
+	public boolean addNewCompany(Company company) throws Exception {
+		boolean flag = false;
+    	// 获取数据库的连接
+		Connection conn = DBTool.getConnection();
+		// 设置SQL规则，数据由于还不知道先用"？"代替
+		String sql = "insert into company values (?,?,?,?,?,?,?,?,?,?)";
+		//预处理sql语句
+		PreparedStatement presta = conn.prepareStatement(sql);
+		//设置sql语句中的values值
+		int i = 0;
+		i=Integer.valueOf(company.getCompanyId()).intValue();
+		presta.setInt(1, i);
+		presta.setString(2, company.getCompanyName());
+		presta.setString(3, company.getCompanyAddress());
+		presta.setString(4, company.getCompanyType());
+		presta.setString(5, company.getCompanyLegalPerson());
+		presta.setString(6, company.getCompanyEmail());
+		presta.setString(7, company.getCompanyPhone());
+		presta.setString(8, company.getCompanyCaptial());
+		presta.setString(9, company.getCompanyAccount());
+		presta.setString(10, company.getCompanyPassword());
+		// 执行SQL语句，实现数据添加
+		int result = presta.executeUpdate();
+		if(result == 1) {
+			flag = true;
+		}
+		return flag;
 	}
 	
 	public static void main(String[] args)  {

@@ -25,12 +25,12 @@ import service.PositionService;
  * @Description: 项目入口
  * @Data: 2019年1月5日上午9:39:53
  */
-public class CandidateMainGui extends JFrame {
+public class ShowCandidateGui extends JFrame {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
-	public CandidateMainGui() {}
+	public ShowCandidateGui() {}
 	
-	public CandidateMainGui(int candidateId) throws Exception {
+	public ShowCandidateGui(int candidateId) throws Exception {
 		try {
 			String lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 			UIManager.setLookAndFeel(new NimbusLookAndFeel());//new NimbusLookAndFeel()
@@ -84,7 +84,7 @@ public class CandidateMainGui extends JFrame {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		new CandidateMainGui(3);
+		new ShowCandidateGui(3);
 	}
 	
 }

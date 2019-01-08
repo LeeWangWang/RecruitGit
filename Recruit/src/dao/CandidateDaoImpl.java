@@ -1,9 +1,3 @@
-/**@FileName: CandidateDaoImpl.java
- * @Description: 
- * @Paclage: dao
- * @Author: 李旺旺
- * @Data: 2019年1月3日下午7:25:19
- */
 package dao;
 
 import java.sql.*;
@@ -13,15 +7,46 @@ import bean.Candidate;
 import util.DBTool;
 
 /**@ClassName: CandidateDaoImpl.java
- * @Description: 
- * @Extends: 
- * @Implements: 
  * @Author: 李旺旺
  * @Data: 2019年1月3日下午7:25:19
  */
 public class CandidateDaoImpl implements CandidateDao1 {
 
 	public CandidateDaoImpl() { }
+
+	public boolean addNewCandidate(Candidate candidate) throws Exception {
+		boolean flag = false;
+		// 获取数据库的连接
+		Connection conn = DBTool.getConnection();
+		// 设置SQL规则，数据由于还不知道先用"？"代替
+		String sql = "insert into candidate values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		//预处理sql语句
+		PreparedStatement presta = conn.prepareStatement(sql);
+		//设置sql语句中的values值
+		int i = 0;
+		i = Integer.valueOf(candidate.getCandidateId()).intValue();
+		presta.setInt(1, i);
+		presta.setString(2, candidate.getCandidateName());
+		presta.setString(3, candidate.getCandidateGender());
+		presta.setInt(4, candidate.getCandidateAge());
+		presta.setString(5, candidate.getCandidatePhone());
+		presta.setString(6, candidate.getCandidateIdCard());
+		presta.setString(7, candidate.getCandidateEmail());
+		presta.setString(8, candidate.getCandidateAddress());
+		presta.setString(9, candidate.getCandidateMajor());
+		presta.setString(10, candidate.getCandidateEducationed());
+		presta.setString(11, candidate.getCandidateJobObjective());
+		presta.setString(12, candidate.getCandidateWorkExperience());
+		presta.setString(13, candidate.getCandidateAccount());
+		presta.setString(14, candidate.getCandidatePassword());
+		// 执行SQL语句，实现数据添加
+		int result = presta.executeUpdate();
+		if(1 == result){
+			flag = true;
+		}
+		presta.close();
+		return flag;
+	}
 	
 	/**
 	 * @Description: 像数据库里添加新的求职者用户对象
@@ -227,7 +252,7 @@ public class CandidateDaoImpl implements CandidateDao1 {
 		while(rs.next()) {
 			Candidate c = new Candidate(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),
 					rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-					rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));
+					rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14));
 			list.add(c);
 		}
 		rs.close();
@@ -287,6 +312,9 @@ public class CandidateDaoImpl implements CandidateDao1 {
 		pst.close();
 		return result;
 	}
+	
+	
+	
 }
 
 

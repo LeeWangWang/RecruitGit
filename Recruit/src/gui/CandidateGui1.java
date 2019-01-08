@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import bean.*;
 import dao.*;
+import gui.customStyle.StyleArgument;
 import service.*;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
@@ -42,7 +43,6 @@ public class CandidateGui1 extends JPanel{
 	private PositionService positionService;
 	private CandidateService candidateService;
 	private CompanyService companyService;
-	
 	public CandidateGui1(Candidate currentCandidate) throws Exception  {
 		Font font = new Font(StyleArgument.FONTNAME,StyleArgument.FONTSTYLE,StyleArgument.FONTSIZE);
 		//±Í«©
@@ -347,18 +347,6 @@ public class CandidateGui1 extends JPanel{
 		text.setHorizontalAlignment(JTextField.CENTER);
 	}
 	
-}
-
-class MyTableModel extends DefaultTableModel{
-
-	public MyTableModel(Vector data,Vector columns) {
-		super(data, columns);
-	}
-	
-	@Override
-	public boolean isCellEditable(int row, int column) {
-		return false;
-	}
 }
 
 

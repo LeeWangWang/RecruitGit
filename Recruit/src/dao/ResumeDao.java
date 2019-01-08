@@ -17,6 +17,9 @@ public interface ResumeDao {
 	boolean addResume(Resume r) throws Exception;
 	//查找所有申请,根据公司Id
 	List<Resume> searchAll(int companyId) throws Exception;
+
+	List<Resume> searchAll() throws Exception;
+	
 	//通过求职者ID查找申请
 	List<Resume> searchByCandidateId(int searchId) throws Exception;
 	//通过职位ID查找申请

@@ -8,6 +8,29 @@ import util.DBTool;
 public class ResumeDaoImpl implements ResumeDao {
 
 	/**
+	 * 查找所有申请
+	 */
+	public List<Resume> searchAll() throws Exception {
+		List<Resume> list = new ArrayList<Resume>();
+		Connection conn = DBTool.getConnection();
+		ResultSet rs;
+		Statement st = conn.createStatement();		
+		rs = st.executeQuery("select *  from resume where isInterview = 0");	
+		
+		while(rs.next()) {
+			int candidateId = rs.getInt(1);
+			int positionId = rs.getInt(2);
+			short isInterview = rs.getShort(3);
+			Resume r = new Resume(candidateId,positionId,isInterview);
+			list.add(r);
+		}
+		rs.close();
+		st.close();
+		DBTool.closeConnection();
+		return list;
+	}
+	
+	/**
 	 *  添加新的简历信息
 	 */
 	public boolean addResume(Resume r) throws Exception {
@@ -138,7 +161,7 @@ public class ResumeDaoImpl implements ResumeDao {
 		int candidateId = resume.getCandidateId();
 		st.executeQuery("update position set isInterview = "+isInterview+" where positionId = "+positionId+" and candidateId = "+candidateId);
 		st.close();
-		DBTool.closeMySql();
+		DBTool.closeConnection();
 		return flag;
 	}
 }

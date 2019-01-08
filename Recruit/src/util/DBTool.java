@@ -55,7 +55,7 @@ public class DBTool {
      * @Author: 李旺旺
      * @Time: 2018年12月30日下午7:09:15
      */
-    public static void closeMySql(){
+    public static void closeConnection(){
         try {
             if(connection != null && !connection.isClosed()){
                 connection.close();

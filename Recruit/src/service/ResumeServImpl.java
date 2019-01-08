@@ -11,6 +11,15 @@ import dao.ResumeDao;
  */
 public class ResumeServImpl implements ResumeService{
 
+	public List<Resume> searchAll(){
+		try {
+			return resumeDao.searchAll();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	private ResumeDao resumeDao;
 	public ResumeServImpl(ResumeDao resumeDao) {
 		this.resumeDao = resumeDao;
@@ -24,7 +33,6 @@ public class ResumeServImpl implements ResumeService{
 			return null;
 		}
 	}
-
 
 	public List<Resume> searchByPositionId(int searchId) {
 		try {

@@ -33,11 +33,11 @@ public interface PositionDao {
 	/**
 	 * @Description:公司修改职位招聘信息
 	 */
-	public void updatePosition(Position position) throws Exception;
+	void updatePosition(Position position) throws Exception;
 	/**
 	 * @Description:通过职位ID查找职位
 	 */
-	public Position searchByPositionId(int positionId) throws Exception;
+	Position searchByPositionId(int positionId) throws Exception;
 	
 	List<Position> searchByPositionName(String PositionName) throws Exception;
 	

@@ -3,11 +3,11 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.*;
-import java.awt.print.PrinterException;
 import java.util.*;
 import javax.swing.*;
 import bean.Candidate;
 import dao.CandidateDaoImpl;
+import gui.customStyle.StyleArgument;
 import service.CandidateService;
 import service.CandidateServiceImpl;
 

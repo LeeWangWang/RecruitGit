@@ -12,6 +12,8 @@ import bean.Resume;
  * @Date:2019年1月3日
  */
 public interface ResumeService {
+	List<Resume> searchAll();
+	
 	/**
 	 * @Description:通过公司ID查找所有申请
 	 * @FileName:ResumeDao.java

@@ -2,8 +2,6 @@ package service;
 
 import java.util.List;
 
-import com.sun.jndi.url.rmi.rmiURLContext;
-
 import bean.*;
 import dao.CompanyDao;
 

@@ -48,7 +48,7 @@ public class PositionDaoImpl implements PositionDao{
 		}
 		rs.close();
 		st.close();	
-		DBTool.closeMySql();
+		DBTool.closeConnection();
 		return list;
 	}
 	/**
@@ -74,7 +74,7 @@ public class PositionDaoImpl implements PositionDao{
 		}
 		rs.close();
 		st.close();		
-		DBTool.closeMySql();
+		DBTool.closeConnection();
 		return list;
 	}
 	/**
@@ -96,7 +96,7 @@ public class PositionDaoImpl implements PositionDao{
 			String positionDiploma = rs.getString(5);
 			String positionLightspot = rs.getString(6);
 			Position position = new Position(positionId,positionName,companyId,positionIntroduction,positionDiploma,positionLightspot);
-			DBTool.closeMySql();
+			DBTool.closeConnection();
 			return position;
 		}else {
 			return null;
@@ -107,38 +107,33 @@ public class PositionDaoImpl implements PositionDao{
 	 * 公司增添职位
 	 */
 	public void addPosition(Position position) throws Exception {
-			try {
-			int idMax = 0;
-			String positionName = position.getPositionName();
-			int companyId = position.getCompanyId();
-			String positionIntroduction = position.getPositionIntroduction();
-			String positionDiploma = position.getPositionDiploma();
-			String positionLightspot = position.getPositionLightspot();
-			Connection conn = DBTool.getConnection();
-			String sql = "insert into position values(?,?,?,?,?,?)";
-			PreparedStatement st = conn.prepareStatement(sql);
-			ResultSet rs2;
-			String sql2 = "select * from position";
-			PreparedStatement st2 = conn.prepareStatement(sql2);
-			rs2 = st2.executeQuery();
-			while(rs2.next()) {
-				idMax = rs2.getInt(1);
-			}
-			idMax++;
-			
-			st.setInt(1, idMax);
-			st.setString(2, positionName);
-			st.setInt(3, companyId);
-			st.setString(4, positionIntroduction);
-			st.setString(5, positionDiploma);
-			st.setString(6, positionLightspot);
-			st.executeUpdate();
-			st.close();
-			DBTool.closeMySql();
-		}catch(Exception e) {
-			e.printStackTrace();
+		int idMax = 0;
+		String positionName = position.getPositionName();
+		int companyId = position.getCompanyId();
+		String positionIntroduction = position.getPositionIntroduction();
+		String positionDiploma = position.getPositionDiploma();
+		String positionLightspot = position.getPositionLightspot();
+		Connection conn = DBTool.getConnection();
+		String sql = "insert into position values(?,?,?,?,?,?)";
+		PreparedStatement st = conn.prepareStatement(sql);
+		ResultSet rs2;
+		String sql2 = "select * from position";
+		PreparedStatement st2 = conn.prepareStatement(sql2);
+		rs2 = st2.executeQuery();
+		while(rs2.next()) {
+			idMax = rs2.getInt(1);
 		}
+		idMax++;
 		
+		st.setInt(1, idMax);
+		st.setString(2, positionName);
+		st.setInt(3, companyId);
+		st.setString(4, positionIntroduction);
+		st.setString(5, positionDiploma);
+		st.setString(6, positionLightspot);
+		int result = st.executeUpdate();
+		st.close();
+		DBTool.closeConnection();
 	}
 	/**
 	 * 公司删除招聘信息
@@ -149,7 +144,7 @@ public class PositionDaoImpl implements PositionDao{
 		Statement st = conn.createStatement();
 		st.executeQuery("delete * frome position where positionId = "+positionId);
 		st.close();
-		DBTool.closeMySql();
+		DBTool.closeConnection();
 	}
 	/**
 	 * 公司修改招聘信息
@@ -170,10 +165,10 @@ public class PositionDaoImpl implements PositionDao{
 		st.executeQuery("update position set positionName = "+positionName+" where positionId = "+positionId);
 		st.executeQuery("update position set positionIntroduction = "+positionIntroduction+" where positionId = "+positionId);
 		st.executeQuery("update position set positionDiploma = "+positionDiploma+" where positionId = "+positionId);
-		st.executeQuery("update position set positionLightspot = "+positionLightspot+" where positionId = "+positionId);
-		
+		st.executeQuery("update position set positionLightspot = "+positionLightspot+" where positionId = "+positionId);		
 		st.close();
-		DBTool.closeMySql();
+		DBTool.closeConnection();
+		
 	}
 
 	//模糊查询职位

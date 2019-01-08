@@ -128,4 +128,21 @@ public class CandidateServiceImpl implements CandidateService {
 			return null;
 		}
 	}
+
+	public List<Candidate> searchAll() {
+		try {
+			return candidateDao.searchAll();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void addNewCandidate(Candidate candidate) {
+		try {
+			candidateDao.addNewCandidate(candidate);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

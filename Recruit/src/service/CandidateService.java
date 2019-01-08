@@ -27,4 +27,7 @@ public interface CandidateService {
 	List<Candidate> searchByEducation(String education) throws Exception;
 	boolean updateCandidate(Candidate c) throws Exception;
 	Candidate searchByCandidateId(int candidateId) throws Exception;
+	List<Candidate> searchAll() throws Exception; 
+	void addNewCandidate(Candidate candidate) throws Exception;
+
 }
