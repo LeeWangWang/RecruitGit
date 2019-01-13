@@ -189,5 +189,77 @@ public class PositionDaoImpl implements PositionDao{
 		return list;
 	}
 	
+	public List<Position> searchByPositionName(int companyId,String PositionName) throws Exception{
+		List<Position> list = new ArrayList<Position>();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from position where companyId = ? and positionName like ? order by convert(positionName using GBK)");
+		pst.setInt(1, companyId);
+		pst.setString(2, "%" + PositionName + "%");
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Position c = new Position(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
+					rs.getString(5),rs.getString(6));
+			list.add(c);
+		}
+		rs.close();
+		pst.close();
+		return list;
+	}
+	
+	public List<Position> searchByPositionIntroduciton(int companyId,String PositionIntroduction) throws Exception{
+		List<Position> list = new ArrayList<Position>();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from position where companyId = ? and positionIntroduction like ? order by convert(positionIntroduction using GBK)");
+		pst.setInt(1, companyId);
+		pst.setString(2, "%" + PositionIntroduction + "%");
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Position c = new Position(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
+					rs.getString(5),rs.getString(6));
+			list.add(c);
+		}
+		rs.close();
+		pst.close();
+		return list;
+	}
+	
+	public List<Position> searchByPositionDiploma(int companyId,String PositionDiploma) throws Exception{
+		List<Position> list = new ArrayList<Position>();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from position where companyId = ? and positionDiploma like ? order by convert(positionDiploma using GBK)");
+		pst.setInt(1, companyId);
+		pst.setString(2, "%" + PositionDiploma + "%");
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Position c = new Position(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
+					rs.getString(5),rs.getString(6));
+			list.add(c);
+		}
+		rs.close();
+		pst.close();
+		return list;
+	}
+
+	public List<Position> searchByPositionLightspot(int companyId,String PositionLightspot) throws Exception{
+		List<Position> list = new ArrayList<Position>();//创建查询结果对象
+		Connection conn = DBTool.getConnection();//连接数据库
+		ResultSet rs;//数据库结果集的数据表
+		PreparedStatement pst = conn.prepareStatement("select * from position where companyId = ? and positionLightspot like ? order by convert(positionLightspot using GBK)");
+		pst.setInt(1,companyId);
+		pst.setString(2, "%" + PositionLightspot + "%");
+		rs = pst.executeQuery();
+		while(rs.next()) {
+			Position c = new Position(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
+					rs.getString(5),rs.getString(6));
+			list.add(c);
+		}
+		rs.close();
+		pst.close();
+		return list;
+	}
+
 }
 

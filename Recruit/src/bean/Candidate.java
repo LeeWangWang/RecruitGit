@@ -2,8 +2,6 @@ package bean;
 
 /**@ClassName:User.java
  * @Description: 用户类,描述用户的基本属性
- * @Extends: null
- * @Implements: null
  * @Author: 李旺旺
  * @Data:2018年12月30日下午6:53:39
  */

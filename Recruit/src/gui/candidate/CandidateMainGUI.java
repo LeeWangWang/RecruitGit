@@ -1,4 +1,4 @@
-package gui;
+package gui.candidate;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -25,6 +25,7 @@ import dao.PositionDao;
 import dao.PositionDaoImpl;
 import dao.ResumeDao;
 import dao.ResumeDaoImpl;
+import gui.CompanyResumeGUI;
 import service.CandidateService;
 import service.CandidateServiceImpl;
 import service.CompanyService;
@@ -33,7 +34,11 @@ import service.PositionServImpl;
 import service.PositionService;
 import service.ResumeServImpl;
 import service.ResumeService;
-
+/**
+ * @ClassName: CandidateMainGUI.java
+ * @Author: 穆正阳
+ * @Data: 2019年1月9日上午8:31:41
+ */
 public class CandidateMainGUI extends JFrame{
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;

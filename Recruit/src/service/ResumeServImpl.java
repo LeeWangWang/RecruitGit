@@ -74,12 +74,21 @@ public class ResumeServImpl implements ResumeService{
 	}
 
 
-	public boolean dealResume(Resume resume, short isInterview) {
+	public boolean dealResume(Resume resume, int isInterview) {
 		try {
 			return resumeDao.dealResume(resume, isInterview);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public List<Resume> searchByPositionIdIsInter(int positionId,int isInterview){
+		try {
+			return resumeDao.searchByPositionIdIsInter(positionId, isInterview);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

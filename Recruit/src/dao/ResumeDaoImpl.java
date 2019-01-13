@@ -4,7 +4,11 @@ import java.sql.*;
 import java.util.*;
 import bean.Resume;
 import util.DBTool;
-
+/**
+ * @ClassName: ResumeDaoImpl.java
+ * @Author: 李旺旺
+ * @Data: 2019年1月9日上午8:29:39
+ */
 public class ResumeDaoImpl implements ResumeDao {
 
 	/**
@@ -153,7 +157,7 @@ public class ResumeDaoImpl implements ResumeDao {
 	 *  公司处理申请 
 	 */
 	@Override
-	public boolean dealResume(Resume resume, short isInterview) throws Exception {
+	public boolean dealResume(Resume resume, int isInterview) throws Exception {
 		boolean flag = true;
 		Connection conn = DBTool.getConnection();
 		Statement st = conn.createStatement();
@@ -164,6 +168,27 @@ public class ResumeDaoImpl implements ResumeDao {
 		DBTool.closeConnection();
 		return flag;
 	}
+	
+	public List<Resume> searchByPositionIdIsInter(int positionID,int isInterview) throws Exception{
+		Connection conn = DBTool.getConnection();
+		ResultSet rs;
+		Statement st = conn.createStatement();
+		List<Resume> list = new ArrayList<Resume>();
+		
+		rs = st.executeQuery("select * from resume where positionId = "+positionID+" and isInterview = "+isInterview);
+		while(rs.next()) {
+			int candidateId = rs.getInt(1);
+			int positionId = rs.getInt(2);
+			Resume r = new Resume(candidateId,positionId,isInterview);
+			list.add(r);
+			
+		}
+		rs.close();
+		st.close();	
+		DBTool.closeConnection();
+		return list;
+	}
+	
 }
 
 

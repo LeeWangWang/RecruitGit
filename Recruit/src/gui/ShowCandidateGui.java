@@ -14,6 +14,8 @@ import bean.Position;
 import dao.CandidateDaoImpl;
 import dao.CompanyDaoImpl;
 import dao.PositionDaoImpl;
+import gui.candidate.CandidateGui1;
+import gui.candidate.CandidateGui2;
 import service.CandidateService;
 import service.CandidateServiceImpl;
 import service.CompanyService;

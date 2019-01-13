@@ -90,5 +90,44 @@ public class PositionServImpl implements PositionService{
 		}
 	}
  	
+ 	public List<Position> searchByPositionName(int companyId,String PositionName) {
+		try {
+			return positionDao.searchByPositionName(companyId,PositionName);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+ 	
+ 	public List<Position> searchByPositionIntroduciton(int companyId,String Introduciton) {
+		try {
+			return positionDao.searchByPositionIntroduciton(companyId,Introduciton);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Position> searchByPositionDiploma(int companyId,String Diploma) {
+		try {
+			return positionDao.searchByPositionDiploma(companyId,Diploma);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Position> searchByPositionLightspot(int companyId,String PositionLightspot) {
+		try {
+			return positionDao.searchByPositionLightspot(companyId,PositionLightspot);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+ 	
 }
 

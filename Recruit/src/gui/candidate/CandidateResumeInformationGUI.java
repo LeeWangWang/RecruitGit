@@ -1,4 +1,4 @@
-package gui;
+package gui.candidate;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -26,6 +26,8 @@ import gui.customStyle.StyleArgument;
  * @data 2019Äê1ÔÂ5ÈÕ
  */
 public class CandidateResumeInformationGUI extends JPanel{
+	/** serialVersionUID */
+	private static final long serialVersionUID = 1L;
 	private Vector<String> tableColNames;	
 	private List<JLabel> lblItemNames;
 	public CandidateResumeInformationGUI(){

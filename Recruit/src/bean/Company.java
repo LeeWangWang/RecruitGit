@@ -1,5 +1,9 @@
 package bean;
-
+/**
+ * @ClassName: Company.java
+ * @Author: 周天乐
+ * @Data: 2019年1月5日上午8:27:51
+ */
 public class Company extends Object implements Comparable<Company> {
 
 	private int companyId;								//公司ID

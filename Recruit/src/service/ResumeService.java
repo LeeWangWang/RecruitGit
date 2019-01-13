@@ -55,6 +55,9 @@ public interface ResumeService {
 	 * @Author:周天乐Sio
 	 * @Date:2019年1月3日
 	 */
-	boolean dealResume(Resume resume,short isInterview);
+	boolean dealResume(Resume resume,int b);
+	
+	List<Resume> searchByPositionIdIsInter(int positionId,int isInterview);
+	
 }
 

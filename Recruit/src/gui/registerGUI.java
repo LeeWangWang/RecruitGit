@@ -5,6 +5,8 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import bean.Candidate;
 import bean.Company;
 import dao.*;
+import gui.candidate.CandidateMainGUI;
+import gui.company.CompanyMainGUI;
 import gui.customStyle.*;
 import service.CandidateServiceImpl;
 import service.CompanyServiceImpl;
@@ -138,8 +140,8 @@ public class registerGUI extends JFrame{
 							 *//*
 							System.out.println(newC.getCompanyId());
 							*/
-							
-							 dispose();//本窗口销毁,释放内存资源
+							new CompanyMainGUI(newC.getCompanyId());
+							dispose();//本窗口销毁,释放内存资源
 				            return;
 						}else {
 							JOptionPane.showMessageDialog(null, "您的账号或密码输入错误，请重新输入!");

@@ -29,7 +29,7 @@ public interface ResumeDao {
 	//公司删除职位后将相关申请一并删除
 	boolean deleteByPositionId(int deleteId) throws Exception;
 	//公司处理申请
-	boolean dealResume(Resume resume,short isInterview) throws Exception;
-
+	boolean dealResume(Resume resume,int isInterview) throws Exception;
 	
+	List<Resume> searchByPositionIdIsInter(int position,int isInterview) throws Exception; 
 }

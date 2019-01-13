@@ -1,4 +1,4 @@
-package gui;
+package gui.candidate;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -10,7 +10,11 @@ import dao.CandidateDaoImpl;
 import gui.customStyle.StyleArgument;
 import service.CandidateService;
 import service.CandidateServiceImpl;
-
+/**
+ * @ClassName: CandidateGui2.java
+ * @Author: 李旺旺
+ * @Data: 2019年1月9日上午8:31:31
+ */
 public class CandidateGui2 extends JPanel{
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;

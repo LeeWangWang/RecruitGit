@@ -15,30 +15,15 @@ import bean.Position;
  */
 public interface PositionService {
 
-	/**
-	 * @Description:查找所有职位
-	 */
 	List<Position> searchAll();	
-	/**
-	 * @Description:通过公司编号查找职位
-	 */
 	List<Position> searchByCompanyId(int searchId);
-	/**
-	 * @Description:添加职位
-	 */
-	void addPosition(Position position);
-	/**
-	 * @Description:公司删除职位
-	 */
-	void deletePosition(int positionId);
-	/**
-	 * @Description:公司修改职位招聘信息
-	 */
-	public void updatePosition(Position position);
-	/**
-	 * @Description:通过职位ID查找职位
-	 */
-	public Position searchByPositionId(int positionId);
-
 	List<Position> searchByPositionName(String PositionName);	
+	List<Position> searchByPositionName(int companyId,String PositionName);
+	void addPosition(Position position);
+	void deletePosition(int positionId);
+	public void updatePosition(Position position);
+	Position searchByPositionId(int positionId);
+	List<Position> searchByPositionIntroduciton(int companyId,String Introduciton);
+	List<Position> searchByPositionDiploma(int companyId,String Diploma);
+	List<Position> searchByPositionLightspot(int companyId,String PositionLightspot);
 }

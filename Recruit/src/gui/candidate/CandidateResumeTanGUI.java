@@ -1,4 +1,4 @@
-package gui;
+package gui.candidate;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -20,7 +20,11 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import bean.Position;
 import gui.customStyle.ButtonFont;
 import gui.customStyle.StyleArgument;
-
+/**
+ * @ClassName: CandidateResumeTanGUI.java
+ * @Author: 穆正阳
+ * @Data: 2019年1月9日上午8:32:02
+ */
 public class CandidateResumeTanGUI extends JFrame{
 	
 	/** serialVersionUID */

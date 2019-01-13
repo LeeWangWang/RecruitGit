@@ -4,7 +4,11 @@ import java.sql.*;
 import java.util.*;
 import util.DBTool;
 import bean.*;
-
+/**
+ * @ClassName: CompanyDaoImpl.java
+ * @Author: 周天乐
+ * @Data: 2019年1月9日上午8:29:12
+ */
 public class CompanyDaoImpl implements CompanyDao {
 
 	public List<Company> searchAll() throws Exception {

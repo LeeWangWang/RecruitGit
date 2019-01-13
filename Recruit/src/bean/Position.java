@@ -1,5 +1,9 @@
 package bean;
-
+/**
+ * @ClassName: Position.java
+ * @Author: 周天乐
+ * @Data: 2019年1月9日上午8:28:11
+ */
 public class Position extends Object{
 
 	private int positionId;									//职位编号
